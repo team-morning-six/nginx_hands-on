@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  test-debian:
+    build: .
+    command: /bin/bash
+    ports:
+      - "8080:80"
+      - "8082:82"
+      - "8088:88"
+      - "8089:89"
+      - "8443:443"
+      - "8444:444"
+    stdin_open: true
+    tty: true
