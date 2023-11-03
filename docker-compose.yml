@@ -2,6 +2,7 @@ version: "3"
 
 services:
   test-debian:
+    command: apache2ctl -D FOREGROUND
     build: .
     ports:
       - "8080:80"
