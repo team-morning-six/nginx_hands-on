@@ -1,0 +1,14 @@
+server {
+        listen 88 default_server;      # 80 => 88 に変更
+        listen [::]:88 default_server; # 80 => 88 に変更
+
+        root /var/www/html;
+
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}

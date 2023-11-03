@@ -3,7 +3,6 @@ version: "3"
 services:
   test-debian:
     build: .
-    command: /bin/bash
     ports:
       - "8080:80"
       - "8082:82"
@@ -11,5 +10,12 @@ services:
       - "8089:89"
       - "8443:443"
       - "8444:444"
+    volumes:
+      - ./config/apache/var/www:/var/www
+      - ./config/apache/etc/apache2/sites-available:/etc/apache2/sites-enabled
+      - ./config/apache/etc/apache2/ports.conf:/etc/apache2/ports.conf
+      - ./config/nginx/etc/nginx/sites-enabled/default:/etc/nginx/sites-enabled/default
+      - ./config/nginx/etc/nginx/sites-enabled/proxy:/etc/nginx/sites-enabled/proxy
+
     stdin_open: true
     tty: true

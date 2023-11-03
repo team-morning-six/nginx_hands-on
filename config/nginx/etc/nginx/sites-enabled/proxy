@@ -1,0 +1,17 @@
+upstream backend {
+        server localhost:80 weight=1;
+        server localhost:82 weight=1;
+}
+
+server {
+        listen 89 default_server;
+        listen [::]:89 default_server;
+
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                proxy_pass http://backend;
+        }
+}
